@@ -131,7 +131,12 @@ nine = (
     1, 0, 1,
     0
 )
-number = [zero, one, two, three, four, five, six, seven, eight, nine]
+number = [
+    zero, one, two,
+    three, four, five,
+    six, seven, eight,
+    nine
+]
 ex = '141700'
 for k in range(len(ex)):
     for i in range(len(writer)):
