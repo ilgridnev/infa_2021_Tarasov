@@ -10,6 +10,7 @@ SIDE = 300
 dt = 1
 alfa = 30
 beta = 10
+
 trt.penup()
 trt.goto(SIDE, SIDE)
 trt.pendown()
@@ -40,16 +41,16 @@ for t in range(steps_of_time_number):
         if x[i] + Vx[i]*dt > SIDE or x[i] + Vx[i]*dt < -SIDE:
             Vx[i] = -Vx[i]
         for k in range(len(pool)):
-            leng = (x[i] - x[k]) * (x[i] - x[k]) + \
-                   (y[i] - y[k]) * (y[i] - y[k])
+            leng = (x[i] - x[k])*(x[i] - x[k]) + \
+                   (y[i] - y[k])*(y[i] - y[k])
             if leng < 900 and leng > 0:
-                ax = alfa * (x[i] - x[k]) / leng
-                ay = alfa * (y[i] - y[k]) / leng
+                ax = alfa*(x[i] - x[k]) / leng
+                ay = alfa*(y[i] - y[k]) / leng
                 Vx[i] += ax * dt
                 Vy[i] += ay * dt
             if leng > 0:
-                ax = beta * (x[k] - x[i]) / leng
-                ay = beta * (y[k] - y[i]) / leng
+                ax = beta*(x[k] - x[i]) / leng
+                ay = beta*(y[k] - y[i]) / leng
                 Vx[i] += ax * dt
                 Vy[i] += ay * dt
         pool[i].goto(x[i], y[i])
