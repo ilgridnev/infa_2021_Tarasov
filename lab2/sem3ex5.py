@@ -7,7 +7,7 @@ number_of_parts = 30
 steps_of_time_number = 1000
 
 SIDE = 300
-dt = 1
+dt = 0.5
 alfa = 30
 beta = 10
 
@@ -37,13 +37,13 @@ for t in range(steps_of_time_number):
         x[i] += Vx[i] * dt
         y[i] += Vy[i] * dt
         if y[i] + Vy[i]*dt > SIDE or y[i] + Vy[i]*dt < -SIDE:
-            Vy[i] = -Vy[i]
+            Vy[i] = -Vy[i] * 0.95
         if x[i] + Vx[i]*dt > SIDE or x[i] + Vx[i]*dt < -SIDE:
-            Vx[i] = -Vx[i]
+            Vx[i] = -Vx[i] * 0.95
         for k in range(len(pool)):
             leng = (x[i] - x[k])*(x[i] - x[k]) + \
                    (y[i] - y[k])*(y[i] - y[k])
-            if leng < 900 and leng > 0:
+            if leng < 1000 and leng > 0:
                 ax = alfa*(x[i] - x[k]) / leng
                 ay = alfa*(y[i] - y[k]) / leng
                 Vx[i] += ax * dt
