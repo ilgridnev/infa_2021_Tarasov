@@ -19,9 +19,9 @@ def middle_side(q):
     if q == 1:
         trt.pendown()
     trt.forward(
-        SIDE)
+                SIDE)
     trt.right(
-        135)
+              135)
 
 
 def diag_side(q):
@@ -31,7 +31,7 @@ def diag_side(q):
     trt.forward(
         DIAG)
     trt.left(
-        135)
+             135)
 
 
 def turn_side(q):
