@@ -15,7 +15,7 @@ green = (55, 200, 113)
 blue = (95, 188, 211)
 red = (255, 0, 0)
 brown = (200, 171, 55)
-bulldog_color = (108, 103, 83)  # цвет отрисовываемых бульдогов (можно менять)
+bulldog_color = (108, 103, 83)  # ВАЖНО! цвет отрисовываемых бульдогов (можно менять)
 
 
 # функция отрисовки забора
@@ -76,6 +76,13 @@ def body(
     pog.draw.ellipse(
         screen,
         bull,
+        (bull_start_x + 11 * bull_size - 30 * bull_size * bull_orient,
+         bull_start_y + 3 * bull_size,
+         8 * bull_size, 5 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
         (bull_start_x - 16 * bull_size * bull_orient,
          bull_start_y + 4 * bull_size,
          16 * bull_size,
@@ -104,6 +111,14 @@ def head(
          bull_start_y,
          8 * bull_size,
          8 * bull_size)
+    )
+    pog.draw.rect(
+        screen,
+        black,
+        (bull_start_x - 8 * bull_size * bull_orient,
+         bull_start_y,
+         8 * bull_size, 8 * bull_size),
+        1
     )
     pog.draw.ellipse(
         screen,
@@ -239,7 +254,7 @@ def head(
     )
 
 
-def bulldog(
+def legs(
         bull_start_x,
         bull_start_y,
         bull_size,
@@ -247,22 +262,12 @@ def bulldog(
         bull
 ):
     '''
-    Функция рисует бульдога на экране.
+    Функция рисует голову бульдога на экране.
     bull_start_x - х координата вернего дальнего угла головы, где "дальний" означает противоположный от тела
     bull_start_y - у координата верхней грани головы
     bull_size - параметр пропорционального увеличения размера
     bull_orient - переменная, принимающая значения 0 или 1, для того чтобы пес смотрел влево и вправо соответственно
     '''
-    body(bull_start_x,
-         bull_start_y,
-         bull_size,
-         bull_orient,
-         bull)
-    head(bull_start_x,
-         bull_start_y,
-         bull_size,
-         bull_orient,
-         bull)
     pog.draw.ellipse(
         screen,
         bull,
@@ -278,13 +283,7 @@ def bulldog(
          bull_start_y + 8 * bull_size,
          4 * bull_size, 9 * bull_size)
     )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x + 11 * bull_size - 30 * bull_size * bull_orient,
-         bull_start_y + 3 * bull_size,
-         8 * bull_size, 5 * bull_size)
-    )
+
     pog.draw.ellipse(
         screen,
         bull,
@@ -341,14 +340,37 @@ def bulldog(
          bull_start_y + 16 * bull_size,
          5 * bull_size, 2 * bull_size)
     )
-    pog.draw.rect(
-        screen,
-        black,
-        (bull_start_x - 8 * bull_size * bull_orient,
+
+
+def bulldog(
+        bull_start_x,
+        bull_start_y,
+        bull_size,
+        bull_orient,
+        bull
+):
+    '''
+    Функция рисует бульдога на экране.
+    bull_start_x - х координата вернего дальнего угла головы, где "дальний" означает противоположный от тела
+    bull_start_y - у координата верхней грани головы
+    bull_size - параметр пропорционального увеличения размера
+    bull_orient - переменная, принимающая значения 0 или 1, для того чтобы пес смотрел влево и вправо соответственно
+    '''
+    body(bull_start_x,
          bull_start_y,
-         8 * bull_size, 8 * bull_size),
-        1
-    )
+         bull_size,
+         bull_orient,
+         bull)
+    legs(bull_start_x,
+         bull_start_y,
+         bull_size,
+         bull_orient,
+         bull)
+    head(bull_start_x,
+         bull_start_y,
+         bull_size,
+         bull_orient,
+         bull)
 
 
 def chain(x, y, l, h):
