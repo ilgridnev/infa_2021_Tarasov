@@ -90,7 +90,7 @@ def body(
     )
 
 
-def head(
+def face(
         bull_start_x,
         bull_start_y,
         bull_size,
@@ -98,58 +98,12 @@ def head(
         bull
 ):
     '''
-    Функция рисует голову бульдога на экране.
+    Функция рисует лицо бульдога на экране.
     bull_start_x - х координата вернего дальнего угла головы, где "дальний" означает противоположный от тела
     bull_start_y - у координата верхней грани головы
     bull_size - параметр пропорционального увеличения размера
     bull_orient - переменная, принимающая значения 0 или 1, для того чтобы пес смотрел влево и вправо соответственно
     '''
-    pog.draw.rect(
-        screen,
-        bull,
-        (bull_start_x - 8 * bull_size * bull_orient,
-         bull_start_y,
-         8 * bull_size,
-         8 * bull_size)
-    )
-    pog.draw.rect(
-        screen,
-        black,
-        (bull_start_x - 8 * bull_size * bull_orient,
-         bull_start_y,
-         8 * bull_size, 8 * bull_size),
-        1
-    )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x - bull_size - 8 * bull_size * bull_orient,
-         bull_start_y,
-         2 * bull_size, 3 * bull_size)
-    )
-    pog.draw.ellipse(
-        screen,
-        black,
-        (bull_start_x - bull_size - 8 * bull_size * bull_orient,
-         bull_start_y,
-         2 * bull_size, 3 * bull_size),
-        1
-    )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x + 7 * bull_size - 8 * bull_size * bull_orient,
-         bull_start_y,
-         2 * bull_size, 3 * bull_size)
-    )
-    pog.draw.ellipse(
-        screen,
-        black,
-        (bull_start_x + 7 * bull_size - 8 * bull_size * bull_orient,
-         bull_start_y,
-         2 * bull_size, 3 * bull_size),
-        1
-    )
     pog.draw.ellipse(
         screen,
         white,
@@ -241,7 +195,7 @@ def head(
     )
     pog.draw.polygon(
         screen,
-        white,
+        black,
         [
             (bull_start_x + 5.7 * bull_size - 11.4 * bull_size * bull_orient,
              bull_start_y + 6.2 * bull_size),
@@ -254,7 +208,7 @@ def head(
     )
 
 
-def legs(
+def head(
         bull_start_x,
         bull_start_y,
         bull_size,
@@ -263,6 +217,73 @@ def legs(
 ):
     '''
     Функция рисует голову бульдога на экране.
+    bull_start_x - х координата вернего дальнего угла головы, где "дальний" означает противоположный от тела
+    bull_start_y - у координата верхней грани головы
+    bull_size - параметр пропорционального увеличения размера
+    bull_orient - переменная, принимающая значения 0 или 1, для того чтобы пес смотрел влево и вправо соответственно
+    '''
+    pog.draw.rect(
+        screen,
+        bull,
+        (bull_start_x - 8 * bull_size * bull_orient,
+         bull_start_y,
+         8 * bull_size,
+         8 * bull_size)
+    )
+    pog.draw.rect(
+        screen,
+        black,
+        (bull_start_x - 8 * bull_size * bull_orient,
+         bull_start_y,
+         8 * bull_size, 8 * bull_size),
+        1
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x - bull_size - 8 * bull_size * bull_orient,
+         bull_start_y,
+         2 * bull_size, 3 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        black,
+        (bull_start_x - bull_size - 8 * bull_size * bull_orient,
+         bull_start_y,
+         2 * bull_size, 3 * bull_size),
+        1
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x + 7 * bull_size - 8 * bull_size * bull_orient,
+         bull_start_y,
+         2 * bull_size, 3 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        black,
+        (bull_start_x + 7 * bull_size - 8 * bull_size * bull_orient,
+         bull_start_y,
+         2 * bull_size, 3 * bull_size),
+        1
+    )
+    face(bull_start_x,
+         bull_start_y,
+         bull_size,
+         bull_orient,
+         bull)
+
+
+def legs(
+        bull_start_x,
+        bull_start_y,
+        bull_size,
+        bull_orient,
+        bull
+):
+    '''
+    Функция рисует ноги бульдога на экране.
     bull_start_x - х координата вернего дальнего угла головы, где "дальний" означает противоположный от тела
     bull_start_y - у координата верхней грани головы
     bull_size - параметр пропорционального увеличения размера
@@ -412,7 +433,7 @@ fence(0, 320, 6)
 bulldog(550, 450, 4, 1, bulldog_color)
 
 # здесь начало отрисовки будки
-# стены, крыша
+# крыша (боковой скат)
 pog.draw.polygon(
     screen,
     brown,
@@ -421,7 +442,7 @@ pog.draw.polygon(
      ]
 )
 
-# стены, крыша
+# крыша (треугольный торец)
 pog.draw.polygon(
     screen,
     brown,
@@ -430,7 +451,7 @@ pog.draw.polygon(
      ]
 )
 
-# стены, крыша
+# стена (боковая)
 pog.draw.polygon(
     screen,
     brown,
@@ -439,7 +460,7 @@ pog.draw.polygon(
      ]
 )
 
-# стены, крыша
+# передняя стена (со стороны входа)
 pog.draw.polygon(
     screen,
     brown,
@@ -448,7 +469,7 @@ pog.draw.polygon(
      ]
 )
 
-# стены, крыша
+# контур боковой стены
 pog.draw.polygon(
     screen,
     black,
@@ -458,7 +479,7 @@ pog.draw.polygon(
     2
 )
 
-# стены, крыша
+# контур бокового ската крыши
 pog.draw.polygon(
     screen,
     black,
@@ -468,7 +489,7 @@ pog.draw.polygon(
     1
 )
 
-# стены, крыша
+# контур треугольного торца крыши
 pog.draw.polygon(
     screen,
     black,
@@ -478,7 +499,7 @@ pog.draw.polygon(
     1
 )
 
-# стены, крыша
+# контур передней стены
 pog.draw.polygon(
     screen,
     black,
@@ -488,7 +509,7 @@ pog.draw.polygon(
     2
 )
 
-# рисуем вход в будку
+# вход в будку
 pog.draw.ellipse(
     screen,
     black,
