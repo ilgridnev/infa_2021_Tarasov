@@ -59,7 +59,7 @@ def fence(
         x += h
 
 
-def bulldog(
+def body(
         bull_start_x,
         bull_start_y,
         bull_size,
@@ -67,22 +67,12 @@ def bulldog(
         bull
 ):
     '''
-    Функция рисует бульдога на экране.
-    bull_start_x - х координата вернего ближнего угла головы, где "ближний" означает граничащий с телом
+    Функция рисует тело бульдога на экране.
+    bull_start_x - х координата вернего дальнего угла головы, где "дальний" означает противоположный от тела
     bull_start_y - у координата верхней грани головы
     bull_size - параметр пропорционального увеличения размера
     bull_orient - переменная, принимающая значения 0 или 1, для того чтобы пес смотрел влево и вправо соответственно
     '''
-    black = (0, 0, 0)
-    white = (255, 255, 255)
-    pog.draw.rect(
-        screen,
-        bull,
-        (bull_start_x - 8 * bull_size * bull_orient,
-         bull_start_y,
-         8 * bull_size,
-         8 * bull_size)
-    )
     pog.draw.ellipse(
         screen,
         bull,
@@ -91,91 +81,29 @@ def bulldog(
          16 * bull_size,
          6 * bull_size)
     )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x - bull_size - 2 * bull_size * bull_orient,
-         bull_start_y + 6 * bull_size,
-         4 * bull_size,
-         9 * bull_size)
-    )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x + 6 * bull_size - 15 * bull_size * bull_orient,
-         bull_start_y + 8 * bull_size,
-         4 * bull_size, 9 * bull_size)
-    )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x + 11 * bull_size - 30 * bull_size * bull_orient,
-         bull_start_y + 3 * bull_size,
-         8 * bull_size, 5 * bull_size)
-    )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x + 11 * bull_size - 26 * bull_size * bull_orient,
-         bull_start_y + 3 * bull_size,
-         4 * bull_size, 4 * bull_size)
-    )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x + 16 * bull_size - 36 * bull_size * bull_orient,
-         bull_start_y + 5 * bull_size,
-         4 * bull_size, 5 * bull_size)
-    )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x + 18 * bull_size - 38 * bull_size * bull_orient,
-         bull_start_y + 9 * bull_size,
-         2 * bull_size, 5 * bull_size)
-    )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x + 13 * bull_size - 28 * bull_size * bull_orient,
-         bull_start_y + 7 * bull_size,
-         2 * bull_size, 5 * bull_size)
-    )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x + 16 * bull_size - 35 * bull_size * bull_orient,
-         bull_start_y + 13 * bull_size,
-         3 * bull_size, 1.5 * bull_size)
-    )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x + 11 * bull_size - 25 * bull_size * bull_orient,
-         bull_start_y + 11 * bull_size,
-         3 * bull_size, 1.5 * bull_size)
-    )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x - 3 * bull_size + bull_size * bull_orient,
-         bull_start_y + 14 * bull_size,
-         5 * bull_size, 2 * bull_size)
-    )
-    pog.draw.ellipse(
-        screen,
-        bull,
-        (bull_start_x + 4 * bull_size - 12 * bull_size * bull_orient,
-         bull_start_y + 16 * bull_size,
-         5 * bull_size, 2 * bull_size)
-    )
+
+
+def head(
+        bull_start_x,
+        bull_start_y,
+        bull_size,
+        bull_orient,
+        bull
+):
+    '''
+    Функция рисует голову бульдога на экране.
+    bull_start_x - х координата вернего дальнего угла головы, где "дальний" означает противоположный от тела
+    bull_start_y - у координата верхней грани головы
+    bull_size - параметр пропорционального увеличения размера
+    bull_orient - переменная, принимающая значения 0 или 1, для того чтобы пес смотрел влево и вправо соответственно
+    '''
     pog.draw.rect(
         screen,
-        black,
+        bull,
         (bull_start_x - 8 * bull_size * bull_orient,
          bull_start_y,
-         8 * bull_size, 8 * bull_size),
-        1
+         8 * bull_size,
+         8 * bull_size)
     )
     pog.draw.ellipse(
         screen,
@@ -307,6 +235,118 @@ def bulldog(
             (bull_start_x + 6.3 * bull_size - 12.6 * bull_size * bull_orient,
              bull_start_y + 5.3 * bull_size)
         ],
+        1
+    )
+
+
+def bulldog(
+        bull_start_x,
+        bull_start_y,
+        bull_size,
+        bull_orient,
+        bull
+):
+    '''
+    Функция рисует бульдога на экране.
+    bull_start_x - х координата вернего дальнего угла головы, где "дальний" означает противоположный от тела
+    bull_start_y - у координата верхней грани головы
+    bull_size - параметр пропорционального увеличения размера
+    bull_orient - переменная, принимающая значения 0 или 1, для того чтобы пес смотрел влево и вправо соответственно
+    '''
+    body(bull_start_x,
+         bull_start_y,
+         bull_size,
+         bull_orient,
+         bull)
+    head(bull_start_x,
+         bull_start_y,
+         bull_size,
+         bull_orient,
+         bull)
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x - bull_size - 2 * bull_size * bull_orient,
+         bull_start_y + 6 * bull_size,
+         4 * bull_size,
+         9 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x + 6 * bull_size - 15 * bull_size * bull_orient,
+         bull_start_y + 8 * bull_size,
+         4 * bull_size, 9 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x + 11 * bull_size - 30 * bull_size * bull_orient,
+         bull_start_y + 3 * bull_size,
+         8 * bull_size, 5 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x + 11 * bull_size - 26 * bull_size * bull_orient,
+         bull_start_y + 3 * bull_size,
+         4 * bull_size, 4 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x + 16 * bull_size - 36 * bull_size * bull_orient,
+         bull_start_y + 5 * bull_size,
+         4 * bull_size, 5 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x + 18 * bull_size - 38 * bull_size * bull_orient,
+         bull_start_y + 9 * bull_size,
+         2 * bull_size, 5 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x + 13 * bull_size - 28 * bull_size * bull_orient,
+         bull_start_y + 7 * bull_size,
+         2 * bull_size, 5 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x + 16 * bull_size - 35 * bull_size * bull_orient,
+         bull_start_y + 13 * bull_size,
+         3 * bull_size, 1.5 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x + 11 * bull_size - 25 * bull_size * bull_orient,
+         bull_start_y + 11 * bull_size,
+         3 * bull_size, 1.5 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x - 3 * bull_size + bull_size * bull_orient,
+         bull_start_y + 14 * bull_size,
+         5 * bull_size, 2 * bull_size)
+    )
+    pog.draw.ellipse(
+        screen,
+        bull,
+        (bull_start_x + 4 * bull_size - 12 * bull_size * bull_orient,
+         bull_start_y + 16 * bull_size,
+         5 * bull_size, 2 * bull_size)
+    )
+    pog.draw.rect(
+        screen,
+        black,
+        (bull_start_x - 8 * bull_size * bull_orient,
+         bull_start_y,
+         8 * bull_size, 8 * bull_size),
         1
     )
 
